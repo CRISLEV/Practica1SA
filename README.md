@@ -1,6 +1,8 @@
 # Practica1sa
 Practica #1 de laboratorio de Software Avanzado
+
 Autor: Christian Gonzalez
+
 Carnet: 200915168
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
