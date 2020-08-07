@@ -5,6 +5,12 @@ Autor: Christian Gonzalez
 
 Carnet: 200915168
 
+## Pasos para ejecutar el proyecto.
+
+Antes de iniciar el proyecto, descargar las librerias de nodeJS con el comando: npm install
+
+Para iniciar el proyecto, ejecutar el comando ng serve y en el navegador dirigirse a http://localhost:4200/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
 
 ## Development server
