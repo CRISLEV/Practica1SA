@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ContactsService } from './contacts.service';
+import * as xml2js from 'xml2js';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,7 @@ export class AppComponent implements OnInit{
   }
 
   refresh() {
-    console.log("refreshing...");
+    //console.log("refreshing...");
     this.dataSource = [...this.dataSource];
     this.changeDetectorRefs.detectChanges();
   }
@@ -33,16 +34,21 @@ export class AppComponent implements OnInit{
     this.contactService.getContacts()
     .subscribe(
       (data) => {
-        this.contacts = data['_embedded'];
-        this.contacts = this.contacts['item'];
-        ELEMENT_DATA = [];
-        for (let i = 0; i < this.contacts.length; i++) {
-          //console.log(this.contacts[i].name);
-          ELEMENT_DATA.push({position: (i+1), name: this.contacts[i].name});
-        }
-        this.dataSource = ELEMENT_DATA;
-        console.log(this.dataSource);
-        this.refresh();
+        //console.log(data);
+        xml2js.parseString(data, function (err, result) {
+          //console.dir(result);
+          this.contacts = result["env:Envelope"]["env:Body"][0]["ns1:readListResponse"][0].list[0].item;
+          //console.log(this.contacts);
+          ELEMENT_DATA = [];
+          for (let i = 0; i < this.contacts.length; i++) {
+            //console.log(this.contacts[i].name);
+            ELEMENT_DATA.push({position: (i+1), name: this.contacts[i].name});
+          }
+          this.dataSource = ELEMENT_DATA;
+          //console.log(this.dataSource);
+          this.refresh();
+        }.bind(this));
+
       },
       (error) => {
         console.error(error);
@@ -51,11 +57,11 @@ export class AppComponent implements OnInit{
   }
 
   actionBtn(){
-    console.log(this.contactName);
+    //console.log(this.contactName);
     var response = this.contactService.newContact(this.contactName)
     .subscribe(
       data => {// Success
-        console.log(data);
+        //console.log(data);
         alert('Contacto creado!');
         this.lstContacts();
       },

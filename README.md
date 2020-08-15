@@ -1,5 +1,5 @@
-# Practica1sa
-Practica #1 de laboratorio de Software Avanzado
+# Practica2sa
+Practica #2 de laboratorio de Software Avanzado
 
 Autor: Christian Gonzalez
 
@@ -16,6 +16,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Habilitar CORS
+Para habilitar CORS en chrome:
+Crear en el escritorio un acceso directo a google chrome, con la siguiente indicacion: 
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="c:/Temp"
+
+Para deshabilitar la seguridad web y no bloquee las solicitudes por las politicas.
+
 
 ## Code scaffolding
 
